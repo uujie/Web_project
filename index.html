@@ -16,6 +16,9 @@
 	<audio id="boom-sound">
 		<source src="boom.mp3" type="audio/mpeg">
 	</audio>
+	<audio id="random_music">
+		<source src="random_music.wav" type="audio/mpeg">
+	</audio>
 	<style>
 		canvas {
 			display: block;
@@ -47,7 +50,6 @@
 			<br>
 			<img src="picture/rabbit.png" id="rabbit" style="margin-right: 25px;" />
 			<img src="picture/monkey.png" id="monkey" style="margin-right: 25px;" />
-			<img src="picture/dog.png" id="dog" style="margin-right: 25px;" />
 		</div>
 		<button id="rand_btn"> Random character</button>
 	</div>
@@ -62,6 +64,7 @@
 		// 取得音效元素
 		var clickSound = document.getElementById("click-sound");
 		var boomSound = document.getElementById("boom-sound");
+		var random_music = document.getElementById("random_music");
 
 		// 監聽點擊事件
 		document.addEventListener("click", function () {
@@ -372,14 +375,16 @@
 						//img2.src = imgId+".png";
 						//img3.src = imgId+'_pipe.png';
 						loadCharacterImage(imgId);
+						loadPipeImage(imgId);
 					});
 				}
 
-				
+				/**/
 				var changeBtn = document.getElementById('rand_btn');
 				changeBtn.addEventListener("click",function(){
 					changeBtn.disabled = true;
-					var delay = Math.floor(Math.random() * 3000) + 2000;
+					random_music.play();
+					var delay = Math.floor(Math.random() * 1000) + 3000;
 					var interval = setInterval(function(){
 						var randomIndex;
 						do{
@@ -387,12 +392,14 @@
 						}while(randomIndex == changeBtn.lastIndex);
 						var imgId = imgData[randomIndex].id; 
 						loadCharacterImage(imgId);
+						loadPipeImage(imgId);
 					},100);
 					setTimeout(function(){
 						clearInterval(interval);
 						var randomIndex = Math.floor(Math.random() * imgData.length);
 						var imgId = imgData[randomIndex].id; 
 						loadCharacterImage(imgId);
+						loadPipeImage(imgId);
 						changeBtn.disabled = false;
 					},delay);
 				});
@@ -405,28 +412,23 @@
 
 				xhr.onload = function() {
 					if (xhr.status === 200) {
-						//var img = document.getElementById('character-image');
-						//img.src = URL.createObjectURL(xhr.response);
 						img2.src = 'picture/' + imgId+".png";
 					}
 				};
+				xhr.send();
+			}
+			function loadPipeImage(imgId){
+				var xhr = new XMLHttpRequest();
+				xhr.open('GET', 'picture/' + imgId + '_pipe.png', true);
+				xhr.responseType = 'blob';
 
-				var xhr2 = new XMLHttpRequest();
-				xhr2.open('GET', 'picture/' + imgId + '_pipe.png', true);
-				xhr2.responseType = 'blob';
-
-				xhr2.onload = function() {
+				xhr.onload = function() {
 					if (xhr.status === 200) {
-						//var img = document.getElementById('character-image');
-						//img.src = URL.createObjectURL(xhr.response);
 						img3.src = 'picture/' +imgId+"_pipe.png";
 					}
 				};
 				xhr.send();
-
-				xhr2.send();
 			}
-
 			var checkgame = document.getElementById("game_canvas");
 			checkgame.addEventListener("mousedown", function () {
 				var rect = canvas.getBoundingClientRect();
