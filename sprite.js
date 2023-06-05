@@ -34,7 +34,7 @@ function initSprites(img_arr) {
 	
 	s_bg = new Sprite(img_arr[3], 0, 0, 160, 300);
 	s_bg.color = "#70C5CF";
-	s_fg = new Sprite(img_arr[0], 138, 0, 112,  56);
+	s_fg = new Sprite(img_arr[9], 0, 0, 110,  56);
 	
 	s_pipeNorth = new Sprite(img_arr[2], 0, 0, 26, 200);
 	s_pipeSouth = new Sprite(img_arr[2], 0, 0, 26, 200);
@@ -49,7 +49,7 @@ function initSprites(img_arr) {
 		Menu:  new Sprite(img_arr[0], 119, 177, 40, 14),
 		Share: new Sprite(img_arr[0], 159, 177, 40, 14),
 		Score: new Sprite(img_arr[0],  79, 191, 40, 14),
-		Ok:    new Sprite(img_arr[0], 119, 191, 40, 14),
+		Ok:    new Sprite(img_arr[10], 0, 0, 220, 90),
 		Start: new Sprite(img_arr[0], 159, 191, 40, 14)
 	}
 
