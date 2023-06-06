@@ -40,15 +40,10 @@ function initSprites(img_arr) {
 	s_pipeSouth = new Sprite(img_arr[2], 0, 0, 26, 200);
 	
 	s_text = {
-		FlappyBird: new Sprite(img_arr[0], 59, 114, 96, 22),
 		GameOver:   new Sprite(img_arr[5], 0, 20, 140, 40),
 		GetReady:   new Sprite(img_arr[6], 0, 0, 160, 40)
 	}
 	s_buttons = {
-		Rate:  new Sprite(img_arr[0],  79, 177, 40, 14),
-		Menu:  new Sprite(img_arr[0], 119, 177, 40, 14),
-		Share: new Sprite(img_arr[0], 159, 177, 40, 14),
-		Score: new Sprite(img_arr[0],  79, 191, 40, 14),
 		Ok:    new Sprite(img_arr[10], 0, 0, 220, 90),
 		Start: new Sprite(img_arr[0], 159, 191, 40, 14)
 	}
